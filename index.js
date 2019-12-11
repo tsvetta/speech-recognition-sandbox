@@ -39,4 +39,8 @@ recognition.onresult = function(event) {
   if (['Полина'].includes(result)) {
     answer.innerHTML = 'Полина, скоро этот ИИ захватит мир, приходи сдаваться уже сейчас'
   }
+
+  if (['Наташа'].includes(result)) {
+    answer.innerHTML = 'Наташа, приходи в гости'
+  }
 }
