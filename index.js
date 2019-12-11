@@ -13,17 +13,26 @@ recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 
 const diagnostic = document.querySelector('.output');
+const answer = document.querySelector('.answer');
 const bg = document.querySelector('html');
 
 recognition.start();
 
 recognition.onresult = function(event) {
-  console.log(event.results);
   const num = event.results.length;
-  const result = event.results[num - 1][0].transcript;
-
+  const result = event.results[num - 1][0].transcript.trim();
   const resultNode = document.createElement('div');
   resultNode.innerText = result;
+
+  console.log(result);
   diagnostic.append(resultNode)
-  bg.style.backgroundColor = result;
+  // bg.style.backgroundColor = result;
+
+  if (['Олег', 'Саша', 'Сергей', 'Настя', 'Дима', 'Аня', 'Рома', 'Оля'].includes(result)) {
+    answer.innerHTML = 'Ты из команды тытытым'
+  }
+
+  if (['Таня'].includes(result)) {
+    answer.innerHTML = 'Здравствуй, мой повелитель!'
+  }
 }
